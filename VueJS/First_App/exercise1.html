@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Exercise 1</title>
+  <script src="../vue.js"></script>
+  <style>
+    img {
+      height: 200px;
+      width: 200px;
+    }
+  </style>
+</head>
+<body>
+  <div id="exercise">
+    <!-- Fill the <p> below with youe Name and Age, using Interpolation-->
+      <p> VueJS is pretty cool - {{ YOUR_NAME }} ({{ YOUR_AGE }})</p>
+    <!-- Output your age multiplied by 3 -->
+      <p> {{ YOUR_AGE }} * 3 = {{ multi() }}</p>
+    <!-- Call a function to output a random float between 0 and 1, (Math.random()) -->
+      <p> Random number between 0 and 100: {{ randomNumber() }}</p>
+    <!-- Search any image on Google and output here by binding the "src" attribute -->
+      <div>
+        <img v-bind:src="imgLink" >
+      </div>
+    <!-- Pre-populate this input with your name (set the "value" attribute) -->
+      <div>
+        <input type="text" v-bind:value="YOUR_NAME">
+      </div>
+  </div>
+
+  <script>
+    new Vue({
+      el: "#exercise",
+      data: {
+        YOUR_NAME: 'Jacob',
+        YOUR_AGE: 25,
+        imgLink: 'https://d1067y8t86k9le.cloudfront.net/wp-content/uploads/2017/03/29223213/vuejs-logo.jpg',
+      },
+      methods: {
+        randomNumber: function() {
+          return (Math.random() * 100);
+        },
+        multi: function(){
+          return this.YOUR_AGE * 3;
+        }
+      }
+    })
+  </script>
+</body>
+</html>
