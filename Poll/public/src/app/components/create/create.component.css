@@ -1,0 +1,18 @@
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+.container {
+  margin-left: 80px;
+  width: 900px;
+}
+
+button {
+  padding: 5px 10px;
+  margin-top: 10px;
+}
+
+span {
+  display: inline-block;
+}

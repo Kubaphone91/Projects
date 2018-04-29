@@ -1,0 +1,67 @@
+<div class="row">
+  <div class="columns large-12">
+    <h4>Don't have an account? Register</h4>
+  </div>
+</div>
+<div class="row" *ngIf="errorMessage">
+<div class="columns large-12">
+  <div class="alert">{{ errorMessage }}</div>
+</div>
+</div>
+<div class="row">
+<div class="columns large-12">
+  <form (submit)="newRegistration($event, register)" #register='ngForm' class='form-group'>
+    <div class="grid-container">
+      <div class="grid-x grid-padding-x">
+        <div class="cell">
+          <label>First name
+            <input type="text" name="first" minlength="2" #first="ngModel" [(ngModel)]='user.first_name' required>
+            <div *ngIf="(first.touched || first.dirty) && first.errors" class="alert">
+              <div *ngIf='first.errors.required'>You must enter a first name</div>
+              <div *ngIf='first.errors.minlength'>Your first name must be at least {{ first.errors.minlength.requiredLength }} characters; {{ first.errors.minlength.actualLength }} character is not enough.</div>
+            </div>
+          </label>
+        </div>
+        <div class="cell">
+          <label>Last name
+            <input type="text" name="last" minlength="2" #last="ngModel" [(ngModel)]='user.last_name' required>
+            <div *ngIf="(last.touched || last.dirty) && last.errors" class="alert">
+              <div *ngIf='last.errors.required'>You must enter a last name</div>
+              <div *ngIf='last.errors.minlength'>Your last name must be at least {{ last.errors.minlength.requiredLength }} characters; {{ last.errors.minlength.actualLength }} character is not enough.</div>
+            </div>
+          </label>
+        </div>
+        <div class="cell">
+          <label>Email
+            <input type="email" name="email" #email='ngModel' [(ngModel)]="user.email" pattern='^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$' required>
+            <div *ngIf="(email.touched || email.dirty) && email.errors" class="alert">
+              <div *ngIf='email.errors'>You must enter a valid email</div>
+            </div>
+          </label>
+        </div>
+        <div class="cell">
+          <label>Password
+            <input type="password" name="password" minlength="5" #password="ngModel" [(ngModel)]='user.password' required>
+            <div *ngIf="(password.touched || password.dirty) && password.errors" class="alert">
+              <div *ngIf='password.errors.required'>You must enter a password</div>
+              <div *ngIf='password.errors.minlength'>Your password must be at least {{ password.errors.minlength.requiredLength }} characters; {{ password.errors.minlength.actualLength }} character is not enough.</div>
+            </div>
+          </label>
+        </div>
+        <div class="cell">
+          <label>Confirm Password
+            <input type="password" name="confirm_pass" #confirm="ngModel" [(ngModel)]='user.confirm' required>
+            <div *ngIf="(confirm.touched || confirm.dirty) && confirm.errors" class="alert">
+              <div *ngIf='confirm.errors.required'>You must confirm your password</div>
+            </div>
+            <div *ngIf="(confirm.touched || confirm.dirty)" class="alert">
+                <div *ngIf='user.confirm != user.password'>Your passwords must match</div>
+              </div>
+          </label>
+        </div>
+      </div>
+    </div>
+    <button type="submit" class="button" [disabled]="register.invalid || user.confirm != user.password">Register</button>
+  </form>
+</div>
+</div>

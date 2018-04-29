@@ -1,0 +1,22 @@
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+h3 {
+  font-weight: 100;
+  font-family: sans-serif;
+}
+
+.container {
+  margin-left: 100px;
+}
+
+.header {
+  margin-bottom: 20px;
+}
+
+button {
+  padding: 5px 10px;
+}
+

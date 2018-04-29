@@ -1,0 +1,36 @@
+<div class="nav">
+  <p>Bucket List</p>
+  <a [routerLink]="['/dashboard']">Home</a>
+  <a [routerLink]="['/']">Logout</a>
+</div>
+
+<div *ngIf='detailUser && currentUser'>
+  <h2>{{ detailUser.name }}'s Bucket List</h2>
+  <h4>Done</h4>
+  <ul>
+    <li *ngFor='let item of done'>
+      <input type="checkbox" [checked]='item.complete' (change)='toggleItem(item._id)' [disabled]='item.creator != currentUser.name'>
+      {{ item.creator }}
+      |
+      {{ item.title }}
+      -
+      {{ item.description }}
+      -
+      {{ item.createdAt | date: 'longDate' }}
+    </li>
+  </ul>
+
+  <h4>Pending</h4>
+  <ul>
+    <li *ngFor='let item of pending'>
+      <input type="checkbox" [checked]='item.complete' (change)='toggleItem(item._id)' [disabled]='item.creator != currentUser.name'>
+      {{ item.creator }}
+      |
+      {{ item.title }}
+      -
+      {{ item.description }}
+      -
+      {{ item.createdAt | date: 'longDate' }}
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,73 @@
+<app-new (newBike)='addBike($event)'></app-new>
+
+<div class="row">
+    <div class="columns large-12">
+      <h2>Edit/Delete Listings</h2>
+    </div>
+</div>
+<div class="row">
+    <div class="columns">
+      <p>{{ errorMessage }}</p>
+    </div>
+</div>
+<section *ngFor='let bike of bikes'>
+  <form (submit)="editBike($event, bike)" #form='ngForm' class='form-group'>
+    <div class="grid-container">
+      <div class="grid-x grid-padding-x">
+        <div class="row">
+          <div class="columns large-3">
+            <div class="cell">
+              <label>Image URL
+                <input type="text" name="img_url" #img_url="ngModel" [(ngModel)]='bike.img_url' required>
+                <div *ngIf="(img_url.touched || img_url.dirty) && img_url.errors" class="alert">
+                  <div *ngIf='img_url.errors.required'>You must include an image</div>
+                </div>
+              </label>
+            </div>
+          </div>
+          <div class="columns large-6">
+            <div class="cell">
+              <label>Title
+                <input type="text" name="title" minlength="3" #title="ngModel" [(ngModel)]='bike.title' required>
+                <div *ngIf="(title.touched || title.dirty) && title.errors" class="alert">
+                  <div *ngIf='title.errors.required'>You must enter a title</div>
+                  <div *ngIf='title.errors.minlength'>The title must be at least {{ title.errors.minlength.requiredLength }} characters; {{ title.errors.minlength.actualLength }} characters is not enough.</div>
+                </div>
+              </label>
+            </div>
+            <div class="cell">
+              <label>Description
+                <input type="text" name="description" maxlength="200" #description="ngModel" [(ngModel)]='bike.description' required>
+                <div *ngIf="(description.touched || description.dirty) && description.errors" class="alert">
+                  <div *ngIf='description.errors.required'>You must enter a description</div>
+                  <div *ngIf='description.errors.maxlength'>The description must be less than {{ description.errors.maxlength.requiredLength }} characters; {{ description.errors.maxlength.actualLength }} characters is too long.</div>
+                </div>
+              </label>
+            </div>
+            </div>
+            <div class="columns large-3">
+              <div class="cell">
+                <label>Price
+                  <input type="number" name="price" min="1" #price="ngModel" [(ngModel)]='bike.price' required>
+                  <div *ngIf="(price.touched || price.dirty) && price.errors" class="alert">
+                    <div *ngIf='price.errors.required'>The price must be at least $1</div>
+                  </div>
+                </label>
+              </div>
+              <div class="cell">
+                <label>Location
+                  <input type="text" name="location" minlength="3" #location="ngModel" [(ngModel)]='bike.location' required>
+                  <div *ngIf="(location.touched || location.dirty) && location.errors" class="alert">
+                    <div *ngIf='location.errors.required'>You must enter a location</div>
+                    <div *ngIf='location.errors.maxlength'>The location must be at least {{ location.errors.minlength.requiredLength }} characters; {{ location.errors.minlength.actualLength }} characters is not enough.</div>
+                  </div>
+                </label>
+              </div>
+              <button type="submit" class="button" [disabled]="form.invalid">Update</button>
+              <button type="button" class="secondary button" (click)='removeBike(bike)'>Delete</button>
+            </div>
+          </div>
+        </div>
+    </div>
+  </form>
+</section>

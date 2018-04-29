@@ -1,0 +1,27 @@
+<p>{{ errorMessage }}</p>
+<section *ngIf="bike">
+  <div class="row"><h2>Featured Bike!</h2></div>
+  <div class="row">
+    <div class="columns large-3">
+      <img src="{{ bike?.img_url }}" alt="Bike - {{ bike?.title }}">
+    </div>
+    <div class="columns large-6">
+        <h2>{{ bike?.title }}</h2>
+        <p>{{ bike?.description }}</p>
+    </div>
+    <div class="columns large-3">
+        <h2>${{ bike?.price }}</h2>
+        <p>{{ bike?.location }}</p>
+        <div *ngIf='auth == true && (userID != bike?.user)'>
+          <button type="button" class="button" (click)='contactUser(bike)'>Contact</button>
+        </div>
+    </div>
+  </div>
+</section>
+
+<div *ngIf='contactedUser' class='modal'>
+    <h3>Contact Info:</h3>
+    <p>{{ bikeOwner?.first_name }} {{ bikeOwner?.last_name }}</p>
+    <p>{{ bikeOwner?.email }}</p>
+    <button (click)='cancelContact()' class="cancel">Close</button>
+</div>

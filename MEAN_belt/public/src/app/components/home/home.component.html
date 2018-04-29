@@ -1,0 +1,9 @@
+<h1>Bucket List</h1>
+
+<form (submit)='loginUser()'>
+  <label for='name'>Name: </label>
+  <input type='text' name='name' id='name' [(ngModel)]='login.name'>
+  <button class="btn btn-success" type="submit">Login</button>
+</form>
+
+<p *ngIf='errors && errors.name'>{{ errors.name }}</p>

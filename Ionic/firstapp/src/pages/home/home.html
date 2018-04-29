@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Ionic Basics
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-grid>
+    <ion-row>
+      <ion-col text-center>
+        <h3>Enter the right Code</h3>
+        <p *ngIf="!didWin()">Tap twice, press four times</p>
+        <p *ngIf="didWin()">You won!</p>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-list>
+          <ion-item>
+            <p>Tapped: {{ tappedNumber }}</p>
+          </ion-item>
+          <ion-item>
+            <p>Pressed: {{ pressedNumber }}</p>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+    <app-reset (didReset)="onDidReset($event)"></app-reset>
+    <ion-row>
+      <ion-col
+        style="background-color: lightgreen"
+        text-center
+        (tap)="onTap()">
+          Tap
+      </ion-col>
+      <ion-col
+        style="background-color: lightgreen"
+        text-center
+        (press)="onPress()">
+          Press
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

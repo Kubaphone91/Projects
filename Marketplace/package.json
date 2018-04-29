@@ -1,0 +1,23 @@
+{
+  "name": "bicycle",
+  "version": "1.0.0",
+  "description": "Packages for back end server",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "author": "Jacob Belica",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "*",
+    "body-parser": "*",
+    "cookie-parser": "*",
+    "express": "*",
+    "express-session": "*",
+    "mongoose": "*",
+    "mongoose-unique-validator": "*",
+    "nodemon": "^1.17.2",
+    "validator": "*"
+  }
+}

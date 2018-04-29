@@ -1,0 +1,21 @@
+.modal {
+  padding: 20px;
+  border: 1px solid;
+  position: fixed;
+  width: 350px;
+  height: 250px;
+  margin: 5% auto;
+  left: 0;
+  top: 200px;
+  right: 0;
+  background: #444444;
+  z-index: 1;
+  color: white;
+}
+
+.cancel {
+  position: absolute;
+  right: 40px;
+  bottom: 40px;
+  color: white;
+}

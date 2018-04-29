@@ -1,0 +1,33 @@
+<div class="dashboard">
+  <div class="header">
+    <h2>Welcome {{ name }}</h2>
+    <a [routerLink]="['/create']">Create Poll</a>
+    |
+    <a [routerLink]="['/']"><span (click)="logout()">Logout</span></a>
+  </div>
+  <div class="current">
+    <h4>Current Polls:</h4>
+    <div class="search">
+      <input type="text" name="search" placeholder="Search..." [(ngModel)]="searchText">
+    </div>
+  </div>
+  <br>
+  <div>
+    <table class="table table-bordered table-striped table-hover">
+      <tr>
+        <th>Name</th>
+        <th>Question</th>
+        <th>Date Posted</th>
+        <th>Action</th>
+      </tr>
+      <tr *ngFor="let poll of polls | search: searchText">
+        <td>{{ poll.creator }}</td>
+        <td><a [routerLink]="['/poll', poll._id]">{{ poll.question }}</a></td>
+        <td>{{ poll.createdAt | date: medium }}</td>
+        <td *ngIf="poll.creator == name" (click)='onEvent($event)'>
+          <button type="button" (click)="deletePoll(poll._id)">Delete</button>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>

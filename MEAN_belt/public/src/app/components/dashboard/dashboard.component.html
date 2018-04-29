@@ -1,0 +1,41 @@
+<div class="nav">
+  <p>Bucket List</p>
+  <a [routerLink]="['/dashboard']" id="home">Home</a>
+  <a [routerLink]="['/']">Logout</a>
+</div>
+
+<h2 *ngIf="currentUser">Welcome, {{ currentUser.name }}!</h2>
+<form (submit)='addItem(formData)' #formData="ngForm">
+  <input type="text" name="title" id="title" placeholder="Title" [(ngModel)]='newItem.title'>
+  <input type="text" name="description" id="description" placeholder="Description" [(ngModel)]='newItem.desc'>
+  <select name="tag" id="tag" [(ngModel)]='newItem.tag'>
+    <option value="Select name..." *ngFor='let user of users'>{{ user?.name }}</option>
+  </select>
+  <button type="submit">Add to list</button>
+</form>
+
+<div *ngIf='errors'>
+  <p *ngIf='errors.title'>{{ errors.title }}</p>
+  <p *ngIf='errors.description'>{{ errors.description }}</p>
+</div>
+
+<h3>Before I die I want to...</h3>
+<ul *ngIf="currentUser">
+  <li *ngFor='let item of currentUser.items'>
+    <input type="checkbox" [checked]='item.complete' (change)='toggleItem(item._id)'>
+    {{ item.creator }}
+    |
+    {{ item.title }}
+    -
+    {{ item.description }}
+    -
+    {{ item.createdAt | date: 'longDate'}}
+  </li>
+</ul>
+
+<div *ngIf='users'>
+  <h4>List of other users (Click to view profile):</h4>
+  <ul *ngFor='let user of users' class="list">
+    <li><a [routerLink]="['/user', user.name]">{{ user.name }}</a></li>
+  </ul>
+</div>
