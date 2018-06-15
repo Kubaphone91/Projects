@@ -5,7 +5,7 @@ const polls = require('../controllers/polls');
 module.exports = app => {
   //Users
   app.post('/api/users', users.login);
-  app.get('/api/users/current', users.getID);
+  app.get('/api/users/current', users.getUser);
   app.get('/api/users/logout', users.logout);
 
   //Polls
@@ -19,5 +19,5 @@ module.exports = app => {
 
   app.all("*", (req, res, next) => {
     res.sendFile(path.resolve("./public/dist/index.html"));
-  })
-};
+  });
+}

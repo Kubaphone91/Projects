@@ -2,7 +2,7 @@
   "name": "poll",
   "version": "1.0.0",
   "description": "Server side dependencies",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "server": "nodemon server.js"
@@ -15,5 +15,6 @@
     "express-session": "^1.15.5",
     "mongoose": "^4.8.1",
     "nodemon": "*"
-  }
+  },
+  "devDependencies": {}
 }

@@ -1,12 +1,18 @@
-
-<div class="container">
-  <a [routerLink]="['/dashboard']">Home</a>
+<div>
+  <ul class="nav nav-pills pull-right">
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="['/dashboard']">Home</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="['/']"><span (click)="logout()">Logout</span></a>
+    </li>
+  </ul>
   <div *ngIf="poll" class="header">
     <h3>{{ poll.question }}</h3>
     <p>Click to vote which is the best option</p>
   </div>
   <div *ngIf="options">
-    <table class="table table-bordered table-striped table-hover">
+    <table class="table table-bordered">
       <tr>
         <th>Option</th>
         <th>Vote Count</th>

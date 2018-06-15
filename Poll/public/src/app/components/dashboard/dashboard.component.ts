@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgModule } from '@angular/core';
 import { Router } from '@angular/router';
 import { DataService } from '../../services/data.service';
+
 
 @Component({
   selector: 'app-dashboard',
@@ -11,6 +12,7 @@ export class DashboardComponent implements OnInit {
 
   name: String;
   polls: Array<any>;
+  searchText: String;
 
   constructor(private _dataService: DataService, private _router: Router) { }
 

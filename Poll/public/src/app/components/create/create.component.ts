@@ -47,4 +47,14 @@ export class CreateComponent implements OnInit {
       })
   }
 
+  logout(){
+    this._dataService.logout()
+      .then(data => {
+        this._router.navigateByUrl('/');
+      })
+      .catch(err => {
+        console.log(err);
+      })
+  }
+
 }

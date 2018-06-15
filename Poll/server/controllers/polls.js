@@ -2,8 +2,9 @@ const mongoose = require('mongoose');
 const Poll = require('../models/poll');
 const Option = require('../models/option');
 
+
 module.exports = {
-  get: (req, res) => {
+  get(req, res) {
     Poll.find({}, (err, polls) => {
       if(err){
         console.log(err);
@@ -12,7 +13,7 @@ module.exports = {
     })
   },
 
-  create: (req, res) => {
+  create(req, res) {
     var newPoll = new Poll({question: req.body.question, creator: req.body.creator});
     newPoll.save((err) => {
       if(err){
@@ -50,7 +51,7 @@ module.exports = {
     return res.json("Poll created with options");
   },
 
-  delete: (req, res) => {
+  delete(req, res) {
     Poll.remove({_id: req.params.id}, (err) => {
       if(err){
         console.log(err);
@@ -59,7 +60,7 @@ module.exports = {
     return res.json("Poll deleted");
   },
 
-  getPoll: (req, res) => {
+  getPoll(req, res) {
     Poll.findOne({_id: req.params.id}, (err, poll) => {
       if(err){
         console.log(err);
@@ -68,7 +69,7 @@ module.exports = {
     })
   },
 
-  vote: (req, res) => {
+  vote(req, res) {
     Option.update({_id: req.body._id}, {$inc: { likes: 1}}, (err) => {
       if(err){
         console.log(err);
@@ -77,7 +78,7 @@ module.exports = {
     })
   },
 
-  getOption: (req, res) => {
+  getOption(req, res) {
     Option.findOne({_id: req.params.id} ,(err, option) => {
       if(err){
         console.log(err)
@@ -86,7 +87,7 @@ module.exports = {
     })
   },
 
-  getOptions: (req, res) => {
+  getOptions(req, res) {
     Option.find({_poll: req.params.id}, (err, options) => {
       if(err){
         console.log(err);

@@ -1,21 +1,22 @@
-* {
-  margin: 0px;
-  padding: 0px;
+
+nav-pills {
+  color: #fff;
 }
 
-.header {
-  margin-bottom: 20px;
+.searchBar {
+  margin-top: 8px;
 }
 
-.header h2 {
-  font-family: sans-serif;
-  font-weight: bold;
+h2, th, td {
+  color: #fff;
 }
 
-.current {
-  font-weight: 100;
-  font-family: sans-serif;
+td>button {
+  color: black;
 }
+
+
+
 
 
 

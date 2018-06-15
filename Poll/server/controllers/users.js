@@ -1,8 +1,7 @@
-const mongoose = require('mongoose');
-const User = require('../models/user');
+const User = require('mongoose').model('User');
 
 module.exports = {
-  login: (req, res) => {
+  login(req, res) {
     User.findOne({name: req.body.name}, (err, user) => {
       if(err){
         console.log(err);
@@ -27,7 +26,7 @@ module.exports = {
     })
   },
 
-  getUser: (req, res) => {
+  getUser(req, res) {
     if(req.session.user){
       return res.json(req.session.user);
     }
@@ -36,7 +35,7 @@ module.exports = {
     }
   },
 
-  logout: (req, res) => {
+  logout(req, res) {
     req.session.destroy();
     console.log("User has logged out");
   }

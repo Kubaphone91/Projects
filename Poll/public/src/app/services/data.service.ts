@@ -15,7 +15,7 @@ export class DataService {
   }
 
   getID(){
-    return this._http.get('/api/users/one')
+    return this._http.get('/api/users/current')
       .map((response: Response) => response.json())
       .toPromise();
   }

@@ -1,0 +1,30 @@
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+h1, p {
+  color: #fff;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.container-fluid {
+  height: 100vh;
+  background-size: cover;
+}
+
+
+/*.picture {
+  height: 100%;
+  background-image: url('http://lapes.org/wp-content/uploads/2018/05/Html-Page-Background-Color-23-with-Html-Page-Background-Color.jpg');
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: repeat;
+  background-size: cover;
+}
+*/

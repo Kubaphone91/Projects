@@ -3,20 +3,20 @@
   padding: 0px;
 }
 
-h3 {
-  font-weight: 100;
-  font-family: sans-serif;
+h3, th, td {
+  color: #fff;
 }
 
-.container {
-  margin-left: 100px;
+p {
+  color: rgb(160, 155, 155);
 }
 
 .header {
-  margin-bottom: 20px;
+  margin: 10px 0px 20px 0px;
 }
 
-button {
+td>button {
   padding: 5px 10px;
+  color: black;
 }
 
